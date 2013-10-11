@@ -1,6 +1,6 @@
-local version="2.15.2"
+local version="3.0.2"
 local bigversion=${version:0:1}
-local URL="http://www.cran.r-project.org/src/base/R-$bigversion/R-$version.tar.gz"
+local URL="http://www.cran.r-project.org/src/base/R-3/R-$version.tar.gz"
 local tb_file=`basename $URL`
 local type="tar.gz"
 local seed_name=$(extract_tool_name $tb_file $type)
@@ -21,13 +21,13 @@ do_install()
   make_tool $seed_name $make_j
   install_tool $seed_name
 
-  ($STAGE_DIR/$seed_name/bin/R --vanilla < $RESOURCES_DIR/r/r_new-packages.R > $LOG_DIR/${seed_name}.r_new-packages.Rout 2>&1) | tee $LOG_DIR/${seed_name}.r_new-packages.err
+  #($STAGE_DIR/$seed_name/bin/R --vanilla < $RESOURCES_DIR/r/r_new-packages.R > $LOG_DIR/${seed_name}.r_new-packages.Rout 2>&1) | tee $LOG_DIR/${seed_name}.r_new-packages.err
 
-  cp -r $STAGE_DIR/$seed_name $STAGE_DIR/$freeze_name
-  perl -i -p -e "s/${seed_name}/${freeze_name}/" $STAGE_DIR/$freeze_name/install/bin/R  $STAGE_DIR/$freeze_name/install/lib64/R/bin/R  $STAGE_DIR/$freeze_name/install/lib64/pkgconfig/libR.pc
+  #cp -r $STAGE_DIR/$seed_name $STAGE_DIR/$freeze_name
+  #perl -i -p -e "s/${seed_name}/${freeze_name}/" $STAGE_DIR/$freeze_name/install/bin/R  $STAGE_DIR/$freeze_name/install/lib64/R/bin/R  $STAGE_DIR/$freeze_name/install/lib64/pkgconfig/libR.pc
 
   ln -sf $STAGE_DIR/$seed_name/install/bin/R $BIN_DIR/$seed_name
-  ln -sf $STAGE_DIR/$freeze_name/install/bin/R $BIN_DIR/$freeze_name
+  #ln -sf $STAGE_DIR/$freeze_name/install/bin/R $BIN_DIR/$freeze_name
 
 }
 
