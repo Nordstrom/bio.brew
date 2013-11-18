@@ -17,7 +17,7 @@ do_install()
   mv $seed_name $STAGE_DIR
   cd $STAGE_DIR/$seed_name
   mkdir $STAGE_DIR/$seed_name/install
-  configure_tool $seed_name "--enable-R-shlib --enable-memory-profiling --enable-static --enable-shared --with-tcltk" "$STAGE_DIR/$seed_name/install"
+  configure_tool $seed_name "--enable-R-shlib --enable-memory-profiling --enable-static --enable-shared --with-tcltk --with-libpng --with-cairo" "$STAGE_DIR/$seed_name/install"
   make_tool $seed_name $make_j
   install_tool $seed_name
 
