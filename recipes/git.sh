@@ -1,4 +1,4 @@
-local version="1.7.3.2"
+local version="1.8.4"
 local type="tar.bz2"
 local URL="http://kernel.org/pub/software/scm/git/git-${version}.${type}"
 local tb_file=`basename $URL`
